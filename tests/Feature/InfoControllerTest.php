@@ -11,7 +11,7 @@ class InfoControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_returns_php_version()
+    public function it_returns_php_version() // Отправляем get-запрос на маршрут /info/server и проверяем, что ответ имеет статутс 200 и имеет json-стрктуру с ключом php_version
     {
         $response = $this->get('/info/server');
 
@@ -20,7 +20,7 @@ class InfoControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_client_info()
+    public function it_returns_client_info()// Отправляем get-запрос на маршрут /info/client и проверяем, что ответ имеет статутс 200 и имеет json-стрктуру с ключом ip и user_agent, а также user_agent = TestAgent
     {
         $response = $this->get('/info/client', [
             'User-Agent' => 'TestAgent'
@@ -32,7 +32,7 @@ class InfoControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_returns_database_info()
+    public function it_returns_database_info() // Отправляем get-запрос на маршрут /info/database и проверяем, что ответ имеет статутс 200 и имеет json-стрктуру с ключом database
     {
         $response = $this->get('/info/database');
 
